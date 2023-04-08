@@ -1,16 +1,16 @@
+import os
+
 import pessoas.funcoes as fnp
 import telas.funcoes as fnt
-
-pessoas = []
 
 while True:
     fnt.menu()
     opcao = input()
 
     if opcao == "1":
-        pessoas = fnp.cadastra_pessoa(pessoas)
+        fnp.cadastra_pessoa()
     elif opcao == "2":
-        fnp.mostra_pessoas(pessoas)
+        fnp.mostra_pessoas()
     elif opcao == "3":
         fnt.mensagem_com_pausa("Encerrando o programa...")
         break
