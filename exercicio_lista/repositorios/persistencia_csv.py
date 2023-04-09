@@ -1,5 +1,6 @@
 import csv
 import os
+import uuid
 
 import models.pessoa as model
 
@@ -13,29 +14,29 @@ class PersistenciaCsv:
     def incluir_pessoa(self, pessoa):
         with open(self.arquivo, mode='a', newline='') as file:
             writer = csv.writer(file)
-            writer.writerow([pessoa.nome, pessoa.idade, pessoa.cidade])
+            writer.writerow([uuid.uuid4(), pessoa.nome, pessoa.idade, pessoa.cidade])
         
     def alterar_pessoa(self, pessoa):
         with open(self.arquivo, mode='w', newline='') as file:
             writer = csv.writer(file)
             for p in self.pessoas:
-                if p[0] == pessoa.nome:
-                    writer.writerow([pessoa.nome, pessoa.idade, pessoa.cidade])
+                if p[0] == pessoa.id:
+                    writer.writerow([pessoa.id, pessoa.nome, pessoa.idade, pessoa.cidade])
                 else:
                     writer.writerow(p)
         
-    def excluir_pessoa(self, nome):
+    def excluir_pessoa(self, id):
         with open(self.arquivo, mode='w', newline='') as file:
             writer = csv.writer(file)
             for p in self.pessoas:
-                if p[0] != nome:
+                if p[0] != id:
                     writer.writerow(p)
         
     def listar_pessoas(self):
         self.carregar_dados()
         lista_instancia_pessoas = []
         for p in self.pessoas:
-            pessoa = model.Pessoa(nome=p[0], idade=p[1], cidade=p[2])
+            pessoa = model.Pessoa(id=p[0], nome=p[1], idade=p[2], cidade=p[3])
             lista_instancia_pessoas.append(pessoa)
         return lista_instancia_pessoas
         

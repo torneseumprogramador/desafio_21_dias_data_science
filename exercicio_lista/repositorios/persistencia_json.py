@@ -1,5 +1,6 @@
 import json
 import os
+import uuid
 
 import models.pessoa as model
 
@@ -11,6 +12,7 @@ class PersistenciaJson:
         self.pessoas = []
         
     def incluir_pessoa(self, pessoa):
+        pessoa.id = uuid.uuid4()
         self.carregar_dados()
         self.pessoas.append(pessoa.__dict__)
         self.salvar_dados()
@@ -18,14 +20,14 @@ class PersistenciaJson:
     def alterar_pessoa(self, pessoa):
         self.carregar_dados()
         for i, p in enumerate(self.pessoas):
-            if p["nome"] == pessoa.nome:
+            if p["id"] == pessoa.id:
                 self.pessoas[i] = pessoa.__dict__
                 self.salvar_dados()
                 break
         
-    def excluir_pessoa(self, nome):
+    def excluir_pessoa(self, id):
         self.carregar_dados()
-        self.pessoas = [p for p in self.pessoas if p["nome"] != nome]
+        self.pessoas = [p for p in self.pessoas if p["id"] != id]
         self.salvar_dados()
         
     def listar_pessoas(self):

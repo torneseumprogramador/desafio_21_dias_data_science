@@ -2,10 +2,15 @@ import os
 import time
 
 import models.pessoa as models
-import repositorios.persistencia_csv as repo
 
+import repositorios.persistencia_mysql as repo
+
+# import repositorios.persistencia_csv as repo
 # import repositorios.persistencia_json as repo
 
+repoInstancia = repo.PersistenciaMySQL("localhost", "desafio_data_science", "root", "root")
+# repoInstancia = repo.PersistenciaCsv("pessoas.csv")
+# repoInstancia = repo.PersistenciaJson("pessoas.json")
 
 def cadastra_pessoa():
     os.system('clear')
@@ -15,15 +20,14 @@ def cadastra_pessoa():
     pessoa.idade = input("Digite a idade: ")
     pessoa.cidade = input("Digite a cidade: ")
     
-    repo.PersistenciaCsv("pessoas.csv").incluir_pessoa(pessoa)
-    # repo.PersistenciaJson("pessoas.json").incluir_pessoa(pessoa)
+    repoInstancia.incluir_pessoa(pessoa)
 
     print("\nUsuário cadastrado com sucesso!")
     time.sleep(2) # espera 2 segundos antes de voltar para o menu
 
 def mostra_pessoas():
-    pessoas = repo.PersistenciaCsv("pessoas.csv").listar_pessoas()
-    # pessoas = repo.PersistenciaJson("pessoas.json").listar_pessoas()
+    pessoas = repoInstancia.listar_pessoas()
+    
     os.system('clear')
     print("LISTA DE USUÁRIOS\n")
     if len(pessoas) == 0:
@@ -36,8 +40,9 @@ def mostra_pessoas():
     input("\nPressione Enter para voltar ao menu...")
 
 def pessoa_formatada(pessoa):
-    # return f"Nome: {pessoa.nome}\nIdade: {pessoa.idade}\nCidade: {pessoa.cidade}"
+    # return f"Id: {pessoa.id}\nNome: {pessoa.nome}\nIdade: {pessoa.idade}\nCidade: {pessoa.cidade}"
     return f"""
+Id: {pessoa.id}
 Nome: {pessoa.nome}
 Idade: {pessoa.idade}
 Cidade: {pessoa.cidade}
