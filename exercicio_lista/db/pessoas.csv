@@ -1,5 +1,5 @@
-nome,idade,cidade
-João,30,São Paulo
-Lana,8,ABC
-Liah,0,ABC
-Sheila,37,ABC
+id,nome,idade,cidade
+f478cdbc-d6b5-11ed-afa1-0242ac120002,João,30,São Paulo
+b0239b1d-66fd-4109-9f83-65d0d8de76a8,Lana,8,ABC
+ff4473ed-4d98-439b-8793-47e4cdbb01f5,Liah,0,ABC
+c8e40dad-9f43-4b11-abd0-cbbe2a109529,Sheila,37,ABC

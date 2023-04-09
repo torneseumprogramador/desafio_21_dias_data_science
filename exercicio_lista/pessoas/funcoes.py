@@ -4,12 +4,12 @@ import time
 import models.pessoa as models
 
 import repositorios.persistencia_mysql as repo
+repoInstancia = repo.PersistenciaMySQL("localhost", "desafio_data_science", "root", "root")
 
 # import repositorios.persistencia_csv as repo
-# import repositorios.persistencia_json as repo
-
-repoInstancia = repo.PersistenciaMySQL("localhost", "desafio_data_science", "root", "root")
 # repoInstancia = repo.PersistenciaCsv("pessoas.csv")
+
+# import repositorios.persistencia_json as repo
 # repoInstancia = repo.PersistenciaJson("pessoas.json")
 
 def cadastra_pessoa():
