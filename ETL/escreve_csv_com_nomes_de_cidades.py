@@ -31,7 +31,7 @@ estados = {'AC': ['Rio Branco'],
 with open('vitimas_de_covid_brasil_2020.csv', mode='w', newline='') as file:
     writer = csv.writer(file, delimiter=',')
     writer.writerow(['id', 'cidade', 'estado', 'numero_de_vitimas'])
-    for i in range(1, 9000001):
+    for i in range(1, 901):
         estado = random.choice(list(estados.keys()))
         cidade = random.choice(estados[estado])
         numero_de_vitimas = random.randint(1, 100)
