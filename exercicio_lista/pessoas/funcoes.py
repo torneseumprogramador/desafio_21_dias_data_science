@@ -2,9 +2,15 @@ import os
 import time
 
 import models.pessoa as models
+import repositorios.persistencia_sqlserver as repo
 
-import repositorios.persistencia_mysql as repo
-repoInstancia = repo.PersistenciaMySQL("localhost", "desafio_data_science", "root", "root")
+repoInstancia = repo.PersistenciaSQLServer("localhost", "desafio_data_science", "sa", "!1#2a3d4c5g6v")
+
+# import repositorios.persistencia_postgre as repo
+# repoInstancia = repo.PersistenciaPostgreSQL("localhost", "desafio_data_science", "danilo", "danilo")
+
+# import repositorios.persistencia_mysql as repo
+# repoInstancia = repo.PersistenciaMySQL("localhost", "desafio_data_science", "root", "root")
 
 # import repositorios.persistencia_csv as repo
 # repoInstancia = repo.PersistenciaCsv("pessoas.csv")
